@@ -27,6 +27,8 @@ int sec;
 
 extern void makeInterrupt21(void);
 
+extern void loadProgram(void);
+
 extern void infinite(void);
 
 char *text;
@@ -35,8 +37,8 @@ char buffer[80];
 char buf[512];
 
 void main(){
-    
-    char *text = "Puta Mierda\0";
+    /*
+    char *text = "Hola Mundo\0";
     char *space = "\r\n\0";
     char buffer[80];
     char buf[512];
@@ -52,9 +54,10 @@ void main(){
     
     readSector(buf, 30);
     printString(buf);
-    
+    */
 
     makeInterrupt21();
+	loadProgram();
     infinite();
 
     

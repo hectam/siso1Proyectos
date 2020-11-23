@@ -13,11 +13,34 @@
 	.global _readSector
 	.extern _printString
 	.extern _readString
+	.global _loadProgram
 
 ;	
 	
 
-
+_loadProgram:
+	mov ax, #0x2000
+	mov ds, ax
+	mov ss, ax
+	mov es, ax
+	
+	;let's have the stack start at 0x2000:fff0
+	mov ax, #0xfff0
+	mov sp, ax
+	mov bp, ax
+	
+	; Read the program from the floppy
+	mov cl, #12 ;cl holds the sector number
+	mov dh, #0 ; dh holds the head number = 0
+	mov ch, #0 ;ch holds the track number = 0
+	mov ah, #2 ;aboslute disk read
+	mov al, #1 ;read 1 sector
+	mov dl, #0 ;read from floppy disk A
+	mov bx, #0 ;read into offset 0 (in the segment)
+	int #0x13 ;call BIOS disk read function
+	
+	;switch to program
+	jmp #0x2000:#0
 
 _printChar:
 	push bp ;hago push del base pointer
