@@ -1,7 +1,7 @@
 ;os-api.asm
-;Luis Ponce, 2019
+;Hector Tabora, 2020
 
-;os-api.asm whatever bro this wont work
+;os-api.asm
 ;El orden de los global y de las funciones importan, si no, tira: 'error reading input'
 ;Si no funciona lo anterior, dejar varias lineas en blanco al final de este archivo
 
